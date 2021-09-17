@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivers</title>
+    <!---->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <!---->
+    <section>
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <form action="/store" method="POST" enctype="multipart/form-data">
+                                <div>
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <br>
+                                <div>
+                                    <label class="form-label">Surname</label>
+                                    <input type="text" class="form-control" name="surname" required>
+                                </div>
+                                <br>
+                                <div>
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <br>
+                                <div>
+                                    <label class="form-label">Tel</label>
+                                    <input type="tel" class="form-control" name="tel">
+                                </div>
+                                <br>
+                                <input type="file" class="form-control" name="file" required>
+                                <br>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-8 mt-5 mt-md-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover shadow border">
+                            <tr>
+                                <td>Id</td>
+                                <td>Name</td>
+                                <td>Surname</td>
+                                <td>Email</td>
+                                <td>Tel</td>
+                                <td>Image</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <% if(result){ %>
+                                <% result.forEach((e) => { %>
+
+                                <tr>
+                                    <td><%= e.id %></td>
+                                    <td><%= e.name %></td>
+                                    <td><%= e.surname %></td>
+                                    <td><%= e.email %></td>
+                                    <td><%= e.tel %></td>
+                                    <td>
+                                        <img src="images/<%= e.image %>" class="img-fluid rounded" width="70">
+                                    </td>
+                                    <td>
+                                        <a href="/edit/<%= e.id %>" class="btn btn-link">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="/destroy/<%= e.id %>/<%= e.image %>" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+
+                                <% }); %>
+                            <% } %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivers</title>
+    <!---->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <!---->
+    <section>
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+
+                            <% if(result){ %>
+
+                            <form action="/update" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<%= result.id %>">
+                                <div>
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" value="<%= result.name %>" required>
+                                </div>
+                                <br>
+                                <div>
+                                    <label class="form-label">Surname</label>
+                                    <input type="text" class="form-control" name="surname" value="<%= result.surname %>" required>
+                                </div>
+                                <br>
+                                <div>
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" value="<%= result.email %>" required>
+                                </div>
+                                <br>
+                                <div>
+                                    <label class="form-label">Tel</label>
+                                    <input type="tel" class="form-control" name="tel" value="<%= result.tel %>">
+                                </div>
+                                <br>
+                                <input type="hidden" value="<%= result.image %>" name="replace">
+                                <input type="file" class="form-control" name="file">
+                                <br>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+
+                            <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
